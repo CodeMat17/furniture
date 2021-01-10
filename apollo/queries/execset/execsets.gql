@@ -1,0 +1,12 @@
+query Execsets {
+    execsets {
+        title
+        intro
+        price
+        new
+        instock
+        image {
+            url
+        }
+    }
+}
