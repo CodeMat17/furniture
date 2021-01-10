@@ -6,7 +6,7 @@
     >
       You are offline. Check your internet connection.
     </div>
-    <div class="max-w-5xl mx-auto md:mt-24">
+    <div class="max-w-5xl mx-auto">
       <div class="w-full flex items-center justify-between px-4 py-6">
         <h1 class="font-semibold text-2xl">Executive Tables</h1>
         <div @click="$router.go(-1)">
@@ -16,19 +16,20 @@
           />
         </div>
       </div>
-      <div class="w-full block mx-auto px-4 flex justify-center">
-        <form>
-          <input 
-          placeholder="Search ..."
-          v-model="query"
-          class="w-full block border-2 rounded-lg py-1 px-2"
-          />
-        </form>
+
+      <div
+        v-if="exectables.length == 0"
+        class="w-full h-screen flex justify-center items-center font-bold text-3xl tracking-widest"
+      >
+        No item loaded yet, please wait ...
       </div>
 
-      <div class="sm:grid sm:grid-cols-2 md:grid-cols-3">
+      <div v-else class="sm:grid sm:grid-cols-2 md:grid-cols-3">
         <div v-for="(exectable, i) in exectables" :key="i" class="px-4 py-3">
-          <n-link to="#">
+          <n-link
+            to="{title: 'exectables-id', params:{id: exectable.id}}"
+            tag="a"
+          >
             <div
               class="relative w-full rounded-xl overflow-hidden shadow-lg border-2 border-pink-200"
             >

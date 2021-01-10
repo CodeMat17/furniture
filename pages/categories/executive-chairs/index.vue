@@ -6,7 +6,7 @@
     >
       You are offline. Check your internet connection.
     </div>
-    <div class="max-w-5xl mx-auto md:mt-24">
+    <div class="max-w-5xl mx-auto">
       <div class="w-full flex items-center justify-between px-4 py-6">
         <h1 class="font-semibold text-2xl">Executive Chairs</h1>
         <div @click="$router.go(-1)">
@@ -16,7 +16,14 @@
           />
         </div>
       </div>
-      <div class="sm:grid sm:grid-cols-2 md:grid-cols-3">
+
+      <div
+        v-if="execchairs.length == 0"
+        class="w-full h-screen flex justify-center items-center font-bold text-3xl tracking-widest"
+      >
+        No item loaded yet, please wait ...
+      </div>
+      <div v-else class="sm:grid sm:grid-cols-2 md:grid-cols-3">
         <div v-for="(execchair, i) in execchairs" :key="i" class="px-4 py-3">
           <n-link to="#">
             <div
