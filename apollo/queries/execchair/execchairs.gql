@@ -1,0 +1,12 @@
+query Execchairs {
+    execchairs {
+        title
+        intro
+        price
+        new
+        instock
+        image {
+            url
+        }
+    }
+}
