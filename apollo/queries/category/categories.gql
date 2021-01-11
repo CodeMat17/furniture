@@ -1,16 +1,9 @@
 query Categories {
     categories {
-        table
-        chair
-        set
-        tableImg {
+        id
+       title
+        image {
             url
         }
-        chairImg {
-            url
-        }
-        setImg {
-            url
-        }
-    }
+    }   
 }
