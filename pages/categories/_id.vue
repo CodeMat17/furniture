@@ -6,7 +6,8 @@
     >
       You are offline. Check your internet connection.
     </div>
-    <div class="max-w-5xl mx-auto">
+    <navbar class="fixed z-50" />
+    <div class="max-w-5xl mx-auto pt-16 sm:pt-24">
       <div class="w-full flex items-center justify-between px-4 py-6">
         <h1 class="font-semibold text-2xl">Executive Tables</h1>
         <div @click="$router.go(-1)">
@@ -16,79 +17,101 @@
           />
         </div>
       </div>
-      
       <client-only>
-        <div class="sm:grid sm:grid-cols-2 md:grid-cols-3">
+        <div class="sm:grid sm:grid-cols-2 lg:grid-cols-3">
           <div
             v-for="(furniture, i) in category.furnitures"
             :key="i"
             class="px-4 py-3"
           >
-            <n-link
-              to="{title: 'exectables-id', params:{id: exectable.id}}"
-              tag="a"
+            <div
+              class="relative w-full rounded-xl overflow-hidden shadow-lg border-2 border-pink-200"
             >
-              <div
-                class="relative w-full rounded-xl overflow-hidden shadow-lg border-2 border-pink-200"
-              >
-                <div class="relative">
-                  <img
-                    :src="'http://localhost:1337' + furniture.image.url"
-                    alt="furniture image"
-                    class="h-64 w-64 md:w-72 mx-auto"
-                  />
-                  <div
-                    v-if="furniture.stock"
-                    class="absolute right-0 bottom-0 m-2 text-sm bg-green-200 text-green-700 px-2 py-1 rounded-md"
-                  >
-                    In stock
-                    
-                  </div>
-                </div>
-                <div class="bg-pink-100 py-4">
-                  <div
-                    v-html="
-                      $md.render(furniture.title || 'Title is loading....')
-                    "
-                    class="text-xl font-bold py-2 px-4 text-gray-700 truncate break-normal break-words"
-                  ></div>
-                  <div>{{ furniture.description }}</div>
-                  <div
-                    class="mt-2 text-xl font-bold py-2 px-4 text-gray-900 truncate break-normal break-words"
-                  >
-                    N{{ furniture.price }}
-                  </div>
-                </div>
+              <div class="relative">
+                <img
+                  :src="'http://localhost:1337' + furniture.image.url"
+                  alt="furniture image"
+                  class="h-64 w-64 md:w-72 mx-auto"
+                />
                 <div
-                  v-if="furniture.new"
-                  class="absolute top-0 bg-pink-200 font-semibold text-pink-600 tracking-wider text-md px-2 py-1 m-2 rounded-lg"
+                  v-if="furniture.stock"
+                  class="absolute right-0 bottom-0 m-2 text-sm bg-green-200 text-green-700 px-2 py-1 rounded-md"
                 >
-                  New
+                  In stock
                 </div>
               </div>
-            </n-link>
+              <div class="bg-pink-100 py-4">
+                <div
+                  v-html="$md.render(furniture.title || 'Title is loading....')"
+                  class="text-xl font-bold py-2 px-4 text-gray-700 truncate break-normal break-words"
+                ></div>
+                <div class="mt-1 px-4 leading-none tracking-wide">
+                  {{ furniture.description }}
+                </div>
+
+                <div
+                  class="flex items-center justify-between mt-2 py-2 px-4 bg-pink-200"
+                >
+                  <div class="text-xl font-bold text-gray-900">
+                    N{{ furniture.price }}
+                  </div>
+
+                  <button
+                    @click="addToCart(furniture)"
+                    class="font-semibold bg-pink-500 text-gray-200 px-3 py-1 rounded-full shadow-lg hover:bg-pink-400 hover:text-gray-700 focus:outline-none"
+                  >
+                    Add To Cart
+                  </button>
+                </div>
+              </div>
+              <div
+                v-if="furniture.new"
+                class="absolute top-0 bg-pink-200 font-semibold text-pink-600 tracking-wider text-md px-2 py-1 m-2 rounded-lg"
+              >
+                New
+              </div>
+            </div>
           </div>
         </div>
         <div
-         v-if="category == null"
+          v-if="error"
+          class="w-full h-screen flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
+        >
+          {{ error }}
+        </div>
+        <div
+          v-if="$apollo.queries.category.loading"
           class="w-full h-screen flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
         >
           Please wait ...
         </div>
-        <button>Add to cart</button>
+        <div
+          v-if="category == null"
+          class="w-full h-screen flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
+        >
+          No product fetched at the moment
+        </div>
+
+         <div>
+      <Cart class="max-w-lg mx-auto"/>
+    </div>
       </client-only>
     </div>
-    <br />
+    <br />   
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import categoryQuery from "~/apollo/queries/category/category";
+import Navbar from "~/components/Navbar.vue";
 export default {
+  components: { Navbar },
   data() {
     return {
+      error: null,
       category: Object,
-    }
+    };
   },
   apollo: {
     category: {
@@ -99,7 +122,16 @@ export default {
           id: this.$route.params.id,
         };
       },
+      error(error) {
+        this.error = JSON.stringify(error.message);
+      },
     },
+  },
+  methods: {
+    ...mapMutations({
+      addToCart: "cart/add",
+      removeFromCart: "cart/remove",
+    }),
   },
 };
 </script>

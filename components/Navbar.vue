@@ -1,17 +1,13 @@
 <template>
   <div class="w-full">
     <header
-      class="bg-transparent sm:flex sm:justify-between sm:items-start sm:px-4 sm:py-3"
+      class="bg-gray-900 sm:flex sm:justify-between sm:items-start sm:px-4 sm:py-0"
     >
-      <div class="flex items-center justify-between text-gray-200 px-4 sm:p-0">
-        <div>
-          <div class="mt-3 flex items-center justify-center text-3xl font-bold">
-            <p
-              class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500"
-            >
-              <img src="@/assets/images/logo.png" />
-            </p>
-          </div>
+      <div class="flex items-center justify-between text-gray-200 px-2 py-2 sm:py-4">
+        <div class="flex items-center justify-center">
+          <img src="@/assets/images/logo.png" />
+          <h1 class="px-6 font-semibold sm:text-xl">Welcome! </h1>
+          <span v-if="isAuthenticated">{{ loggedInUser.username }}</span>
         </div>
         <div class="sm:hidden mt-4">
           <button
@@ -46,24 +42,30 @@
       </div>
       <div
         :class="showMenu ? 'block' : 'hidden'"
-        class="pb-2 uppercase font-semibold tracking-wider text-gray-400 sm:flex sm:items-center"
+        class="pb-2 uppercase font-semibold tracking-wider py-2 text-pink-500 sm:flex sm:items-center"
         @click="showMenu = !showMenu"
       >
         <n-link
-          to="#home"
-          class="block px-4 py-4 hover:bg-gray-500 hover:text-gray-700 rounded sm:tracking-widest"
+          to="/"
+          class="block px-4 py-3 hover:bg-pink-100 hover:text-gray-700 rounded sm:tracking-widest"
           >Home</n-link
         >
         <n-link
-          to="#download"
-          class="block px-4 py-4 hover:bg-gray-500 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
-          >Downloads</n-link
+          to="/categories"
+          class="block px-4 py-3 hover:bg-pink-100 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
+          >Categories</n-link
         >
-        <div class="mx-4 pb-4 mt-2 pt-2">
+        <n-link
+        v-if="isAuthenticated"
+          to="/categories/cart"
+          class="block px-4 py-3 hover:bg-pink-100 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
+          >Cart</n-link
+        >
+        <div v-if="isAuthenticated" class="mx-4 pb-4 mt-2 pt-2">
           <button
             type="button"
             @click="logout"
-            class="w-full block bg-yellow-600 rounded px-4 py-3 hover:bg-yellow-500 text-gray-200 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 tracking-widest font-bold uppercase"
+            class="w-full block bg-pink-500 rounded px-4 py-3 hover:bg-pink-100 text-gray-200 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 tracking-widest font-bold uppercase"
           >
             Logout
           </button>
@@ -82,7 +84,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["isAuthenticated"]),
+    ...mapGetters(["isAuthenticated", "loggedInUser"]),
   },
   methods: {
     async logout() {

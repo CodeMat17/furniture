@@ -22,7 +22,12 @@
         <div class="mt-6 sm:-mt-16 text-center sm:text-left text-gray-300 px-4">
           <div class="">
             <h3 class="text-xl sm:text-2xl font-semibold">
-              Welcome to our world of <span class="text-transparent bg-gradient-to-r bg-clip-text from-red-300 to-pink-500">quality</span> furnitures
+              Welcome to our world of
+              <span
+                class="text-transparent bg-gradient-to-r bg-clip-text from-red-300 to-pink-500"
+                >quality</span
+              >
+              furnitures
             </h3>
             <h1
               class="animate-pulse font-bold text-3xl md:text-5xl text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500"
@@ -41,7 +46,23 @@
           </div>
         </div>
       </div>
-      <navbar class="absolute inset-0 z-40" />
+      <div class="absolute inset-0 z-40 p-4">
+        <div class="flex items-center justify-between">
+          <img src="@/assets/images/logo.png" />
+          <h1 class="font-semibold text-xl text-gray-400 tracking-wider">
+            Welcome!
+          </h1>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters } from "vuex";
+export default {
+   computed: {
+    ...mapGetters(['isAuthenticated', 'loggedInUser'])
+  }
+}
+</script>
