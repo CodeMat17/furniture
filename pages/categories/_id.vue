@@ -19,7 +19,7 @@
       </div>
     
       <client-only>
-        <div v-if="!showCart" class="sm:grid sm:grid-cols-2 lg:grid-cols-3">
+        <div class="sm:grid sm:grid-cols-2 lg:grid-cols-3">
           <div
             v-for="(furniture, i) in category.furnitures"
             :key="i"
