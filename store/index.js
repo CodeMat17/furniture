@@ -7,3 +7,11 @@ export const getters = {
         return state.auth.user;
     },
 };
+
+// async nuxtServerInit({ commit }, { req }) {
+//         ...
+//         await this.$axios.get(`${api}/${cartId}`)
+//             .then((response) => {
+//                     ...
+//                 }
+//                 await commit("cart/clearCart");

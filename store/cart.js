@@ -17,7 +17,6 @@ export const mutations = {
         } else {
             record.quantity++
         }
-        // jwt.set('cart', state.items)
     },
     remove(state, item) {
         const record = state.items.find(i => i.id === item.id)

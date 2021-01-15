@@ -6,8 +6,7 @@
       <div class="flex items-center justify-between text-gray-200 px-2 py-2 sm:py-4">
         <div class="flex items-center justify-center">
           <img src="@/assets/images/logo.png" />
-          <h1 class="px-6 font-semibold sm:text-xl">Welcome! </h1>
-          <span v-if="isAuthenticated">{{ loggedInUser.username }}</span>
+          <h1 class="pl-6 font-semibold sm:text-xl">Welcome! <span v-if="isAuthenticated">{{ loggedInUser.username }}</span></h1>
         </div>
         <div class="sm:hidden mt-4">
           <button
@@ -56,8 +55,7 @@
           >Categories</n-link
         >
         <n-link
-        v-if="isAuthenticated"
-          to="/categories/cart"
+          to="/categories/login"
           class="block px-4 py-3 hover:bg-pink-100 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
           >Cart</n-link
         >

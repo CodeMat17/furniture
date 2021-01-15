@@ -7,16 +7,10 @@
     >
       You are offline. Check your internet connection.
     </div>
-    <div
-      v-if="categories.length == 0"
-      class="absolute w-full font-bold text-center tracking-widest pt-20 text-xl md:text-2xl text-gray-600"
-    >
-      Please wait ...
-    </div>
     <div class="max-w-5xl mx-auto sm:pt-6 md:pt-24">
       <div class="w-full flex items-center justify-between px-4 pt-24 pb-16">
         <h1 class="font-semibold text-2xl">Categories</h1>
-        <div @click="$router.go(-1)">
+        <div @click="$router.go(-1)" class="cursor-pointer">
           <img
             src="@/assets/svg/arrow-left.svg"
             class="p-3 rounded-full shadow-lg border border-pink-100"
@@ -50,17 +44,22 @@
 
     <div
       v-if="error"
-      class="w-full h-screen flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
+      class="w-full h-6 flex justify-center items-center font-bold md:text-lg tracking-widest"
     >
       {{ error }}
     </div>
+     <div
+      v-if="!categories.length"
+      class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
+    >
+      Fetching data
+    </div>
     <div
       v-if="$apollo.queries.categories.loading"
-      class="w-full h-screen flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
+      class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
     >
-      Please wait ...
+      Please wait
     </div>
-
     <br />
   </div>
 </template>

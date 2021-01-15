@@ -13,12 +13,13 @@
         <div @click="$router.go(-1)">
           <img
             src="@/assets/svg/arrow-left.svg"
-            class="p-3 rounded-full shadow-lg"
+            class="p-3 rounded-full shadow-lg cursor-pointer"
           />
         </div>
       </div>
+    
       <client-only>
-        <div class="sm:grid sm:grid-cols-2 lg:grid-cols-3">
+        <div v-if="!showCart" class="sm:grid sm:grid-cols-2 lg:grid-cols-3">
           <div
             v-for="(furniture, i) in category.furnitures"
             :key="i"
@@ -68,41 +69,41 @@
                 v-if="furniture.new"
                 class="absolute top-0 bg-pink-200 font-semibold text-pink-600 tracking-wider text-md px-2 py-1 m-2 rounded-lg"
               >
-                New
+                New 
               </div>
             </div>
           </div>
         </div>
         <div
           v-if="error"
-          class="w-full h-screen flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
+          class="w-full h-32 flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
         >
           {{ error }}
         </div>
         <div
-          v-if="$apollo.queries.category.loading"
-          class="w-full h-screen flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
+          v-if="!category"
+          class="w-full h-32 flex justify-center items-center font-semibold md:text-lg tracking-widest"
         >
-          Please wait ...
+          Fetching furnitures
         </div>
         <div
-          v-if="category == null"
-          class="w-full h-screen flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
+          v-if="$apollo.queries.category.loading"
+          class="w-full h-32 flex justify-center items-center font-semibold md:text-lg tracking-widest"
         >
-          No product fetched at the moment
+          Please wait
         </div>
 
-         <div>
-      <Cart class="max-w-lg mx-auto"/>
-    </div>
+        <!-- <div>
+          <Cart class="max-w-lg mx-auto" />
+        </div> -->
       </client-only>
     </div>
-    <br />   
+    <br />
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations } from "vuex";
 import categoryQuery from "~/apollo/queries/category/category";
 import Navbar from "~/components/Navbar.vue";
 export default {
