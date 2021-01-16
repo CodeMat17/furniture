@@ -89,8 +89,8 @@ export default {
   middleware: "guest",
   data() {
     return {
-      email: "pi@pi.com",
-      password: "mmmmmm",
+      email: "",
+      password: "",
       loading: false,
     };
   },

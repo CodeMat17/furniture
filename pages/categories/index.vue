@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-
+<div>
     <div
       v-if="error"
       class="w-full h-6 flex justify-center items-center font-bold md:text-lg tracking-widest"
@@ -49,16 +49,17 @@
       {{ error }}
     </div>
      <div
-      v-if="!categories.length"
+      v-else-if="!categories.length"
       class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
     >
       Fetching data
     </div>
     <div
-      v-if="$apollo.queries.categories.loading"
+      v-else-if="$apollo.queries.categories.loading"
       class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
     >
       Please wait
+    </div>
     </div>
     <br />
   </div>

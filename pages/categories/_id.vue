@@ -17,7 +17,7 @@
           />
         </div>
       </div>
-    
+
       <client-only>
         <div class="sm:grid sm:grid-cols-2 lg:grid-cols-3">
           <div
@@ -69,7 +69,7 @@
                 v-if="furniture.new"
                 class="absolute top-0 bg-pink-200 font-semibold text-pink-600 tracking-wider text-md px-2 py-1 m-2 rounded-lg"
               >
-                New 
+                New
               </div>
             </div>
           </div>
