@@ -17,14 +17,13 @@
           />
         </div>
       </div>
-
+      
       <div class="sm:grid sm:grid-cols-2 md:grid-cols-3">
         <div v-for="(category, i) in categories" :key="i" class="px-4 py-3">
           <n-link
             :to="{ name: 'categories-id', params: { id: category.id } }"
             tag="a"
           >
-          
             <div
               class="w-full rounded-xl overflow-hidden shadow-xl border-2 border-pink-500"
             >
