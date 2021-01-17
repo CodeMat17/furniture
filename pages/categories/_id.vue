@@ -30,7 +30,7 @@
             >
               <div class="relative">
                 <img
-                  :src="api_url + furniture.image.url"
+                  :src="'http://localhost:1337' + furniture.image.url"
                   alt="furniture image"
                   class="h-64 w-64 md:w-72 mx-auto"
                 />
@@ -112,7 +112,7 @@ export default {
     return {
       error: null,
       category: Object,
-      api_url: process.env.API_AUTH_URL,
+      // api_url: process.env.API_AUTH_URL,
     };
   },
   apollo: {

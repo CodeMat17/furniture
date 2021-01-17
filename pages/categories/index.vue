@@ -28,7 +28,7 @@
               class="w-full rounded-xl overflow-hidden shadow-xl border-2 border-pink-500"
             >
               <img
-                :src="api_url + category.image.url"
+                :src="'http://localhost:1337' + category.image.url"
                 alt="table categories"
                 class="h-32 w-32 mx-auto"
               />
@@ -75,7 +75,6 @@ export default {
       categories: [],
       query: "",
       error: null,
-      api_url: process.env.API_AUTH_URL,
     };
   },
   apollo: {
