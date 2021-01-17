@@ -57,13 +57,21 @@
               >Password is required</span
             >
             <br />
-            <button
-              type="submit"
-              class="uppercase text-gray-300 text-lg bg-pink-500 mt-6 font-bold tracking-widest py-4 px-2 rounded block w-full focus:outline-none hover:bg-pink-600 hover:text-gray-300"
-            >
-              {{ loading ? "Please wait..." : "login" }}
-            </button>
-
+            <div class="flex items-center justify-between">
+               <button
+               @click="$router.go(-1)"
+                type="button"
+                class="uppercase text-red-500 text-lg mt-6 font-bold py-4 px-2 rounded block w-32 border border-red-500  focus:outline-none hover:bg-red-500 hover:text-gray-200"
+              >
+                cancel
+              </button>
+              <button
+                type="submit"
+                class="uppercase text-gray-300 text-lg bg-pink-500 mt-6 font-bold tracking-widest py-4 px-2 rounded block ml-4 w-full focus:outline-none hover:bg-pink-600 hover:text-gray-300"
+              >
+                {{ loading ? "Please wait..." : "login" }}
+              </button>
+            </div>
             <p class="text-gray-700 text-sm mt-2">
               Have no account?
               <n-link to="/categories/register"
@@ -122,7 +130,10 @@ export default {
         } catch (e) {
           this.loading = false;
           // put modal here
-          this.$toast.error(e.response.data.message[0].messages[0].message || 'An error has occured.');
+          this.$toast.error(
+            e.response.data.message[0].messages[0].message ||
+              "An error has occured."
+          );
         }
       } else {
         this.loading = false;

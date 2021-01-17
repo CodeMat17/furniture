@@ -1,7 +1,6 @@
 query Category($id: ID!) {
     category(id: $id) {
         id
-        title
         furnitures {
             id
             title
@@ -9,11 +8,7 @@ query Category($id: ID!) {
             price
             new
             stock
-            img
-            image {
-                url
-            }
-          
+            img          
         }
     }
 }

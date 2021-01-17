@@ -3,10 +3,15 @@
     <header
       class="bg-gray-900 sm:flex sm:justify-between sm:items-start sm:px-4 sm:py-0"
     >
-      <div class="flex items-center justify-between text-gray-200 px-2 py-2 sm:py-4">
+      <div
+        class="flex items-center justify-between text-gray-200 px-2 py-2 sm:py-4"
+      >
         <div class="flex items-center justify-center">
           <img src="@/assets/images/logo.png" />
-          <h1 class="pl-6 font-semibold sm:text-xl">Welcome! <span v-if="isAuthenticated">{{ loggedInUser.username }}</span></h1>
+          <h1 class="pl-2 font-semibold sm:text-xl">
+            Welcome!
+            <span v-if="isAuthenticated">{{ loggedInUser.username }}</span>
+          </h1>
         </div>
         <div class="sm:hidden mt-4">
           <button
@@ -46,7 +51,7 @@
       >
         <n-link
           to="/"
-          class="block px-4 py-3 hover:bg-pink-100 hover:text-gray-700 rounded sm:tracking-widest"
+          class="block px-4 py-5 hover:bg-pink-100 hover:text-gray-700 rounded sm:tracking-widest"
           >Home</n-link
         >
         <n-link
@@ -56,7 +61,7 @@
         >
         <n-link
           to="/categories/login"
-          class="block px-4 py-3 hover:bg-pink-100 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
+          class="block px-4 pt-3 pb-4 hover:bg-pink-100 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
           >Cart</n-link
         >
         <div v-if="isAuthenticated" class="mx-4 pb-4 mt-2 pt-2">

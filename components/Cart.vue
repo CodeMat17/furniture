@@ -22,13 +22,13 @@
           </div>
           <div class="flex flex-col justify-center">
             <button
-              class="font-bold text-2xl text-gray-700 px-4 -py-1 my-2 border border-pink-200 rounded-lg focus:outline-none shadow-lg"
+              class="font-bold text-xl text-gray-700 px-2 -py-1 my-2 border border-pink-200 rounded-lg focus:outline-none shadow-lg"
               @click="addToCart(furniture)"
             >
               +
             </button>
             <button
-              class="font-bold text-2xl text-gray-700 px-4 -py-1 my-2 border border-pink-200 rounded-lg focus:outline-none shadow-lg"
+              class="font-bold text-2xl text-gray-700 px-2 -py-1 my-2 border border-pink-200 rounded-lg focus:outline-none shadow-lg"
               @click="removeFromCart(furniture)"
             >
               -

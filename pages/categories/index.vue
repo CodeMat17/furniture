@@ -44,7 +44,7 @@
     <div>
       <div
         v-if="error"
-        class="w-full h-6 flex justify-center items-center font-bold md:text-lg tracking-widest"
+        class="w-full h-6 flex justify-center items-center font-bold md:text-lg tracking-widest px-4"
       >
         {{ error }}
       </div>

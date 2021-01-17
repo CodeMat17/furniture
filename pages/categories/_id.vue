@@ -76,7 +76,7 @@
         </div>
         <div
           v-if="error"
-          class="w-full h-32 flex justify-center items-center font-bold md:text-lg tracking-widest"
+          class="w-full h-32 flex justify-center items-center font-bold md:text-lg tracking-widest px-4"
         >
           {{ error }}
         </div>
@@ -84,18 +84,14 @@
           v-if="!category"
           class="w-full h-32 flex justify-center items-center font-semibold md:text-lg tracking-widest"
         >
-          Fetching furnitures
+          Fetching furnitures ...
         </div>
         <div
           v-if="$apollo.queries.category.loading"
           class="w-full h-32 flex justify-center items-center font-semibold md:text-lg tracking-widest"
         >
-          Please wait
+          Please wait ...
         </div>
-
-        <!-- <div>
-          <Cart class="max-w-lg mx-auto" />
-        </div> -->
       </client-only>
     </div>
     <br />
@@ -112,7 +108,6 @@ export default {
     return {
       error: null,
       category: Object,
-      // api_url: process.env.API_AUTH_URL,
     };
   },
   apollo: {
