@@ -17,17 +17,19 @@
           />
         </div>
       </div>
+
       <div class="sm:grid sm:grid-cols-2 md:grid-cols-3">
         <div v-for="(category, i) in categories" :key="i" class="px-4 py-3">
           <n-link
             :to="{ name: 'categories-id', params: { id: category.id } }"
             tag="a"
           >
+          
             <div
               class="w-full rounded-xl overflow-hidden shadow-xl border-2 border-pink-500"
             >
               <img
-                :src="'http://localhost:1337' + category.image.url"
+                :src="api_url + category.image.url"
                 alt="table categories"
                 class="h-32 w-32 mx-auto"
               />
@@ -41,25 +43,25 @@
         </div>
       </div>
     </div>
-<div>
-    <div
-      v-if="error"
-      class="w-full h-6 flex justify-center items-center font-bold md:text-lg tracking-widest"
-    >
-      {{ error }}
-    </div>
-     <div
-      v-else-if="!categories.length"
-      class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
-    >
-      Fetching data
-    </div>
-    <div
-      v-else-if="$apollo.queries.categories.loading"
-      class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
-    >
-      Please wait
-    </div>
+    <div>
+      <div
+        v-if="error"
+        class="w-full h-6 flex justify-center items-center font-bold md:text-lg tracking-widest"
+      >
+        {{ error }}
+      </div>
+      <div
+        v-else-if="!categories.length"
+        class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
+      >
+        Fetching data
+      </div>
+      <div
+        v-else-if="$apollo.queries.categories.loading"
+        class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
+      >
+        Please wait
+      </div>
     </div>
     <br />
   </div>
@@ -74,6 +76,7 @@ export default {
       categories: [],
       query: "",
       error: null,
+      api_url: process.env.API_AUTH_URL,
     };
   },
   apollo: {

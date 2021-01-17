@@ -61,7 +61,7 @@
                     @click="addToCart(furniture)"
                     class="font-semibold bg-pink-500 text-gray-200 px-3 py-1 rounded-full shadow-lg hover:bg-pink-400 hover:text-gray-700 focus:outline-none"
                   >
-                    Add To Cart
+                    <p>Add To Cart</p>
                   </button>
                 </div>
               </div>

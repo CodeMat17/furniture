@@ -66,14 +66,14 @@ export default {
     apollo: {
         clientConfigs: {
             default: {
-                httpEndpoint: process.env.GRAPHQL_URL
+                httpEndpoint: process.env.GRAPHQL_URL || 'http://localhost:1337/graphql'
             }
         }
     },
 
     // Axios module configuration (https://go.nuxtjs.dev/config-axios)
     axios: {
-        baseURL: process.env.API_AUTH_URL
+        baseURL: process.env.API_AUTH_URL || "http://localhost:1337"
     },
 
     /*
