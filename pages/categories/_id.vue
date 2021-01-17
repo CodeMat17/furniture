@@ -56,13 +56,12 @@
                   <div class="text-xl font-bold text-gray-900">
                     N{{ furniture.price }}
                   </div>
-
-                  <button
-                    @click="addToCart(furniture)"
-                    class="font-semibold bg-pink-500 text-gray-200 px-3 py-1 rounded-full shadow-lg hover:bg-pink-400 hover:text-gray-700 focus:outline-none"
-                  >
-                    <p>Add To Cart</p>
-                  </button>
+                    <button
+                      @click="addToCart(furniture)"
+                      class="font-semibold bg-pink-500 text-gray-200 px-3 py-1 rounded-full shadow-lg hover:bg-pink-400 hover:text-gray-700 focus:outline-none"
+                    >
+                      Add To Cart
+                    </button>
                 </div>
               </div>
               <div

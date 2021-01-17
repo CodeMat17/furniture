@@ -25,17 +25,20 @@
             tag="a"
           >
             <div
-              class="w-full rounded-xl overflow-hidden shadow-xl border-2 border-pink-500"
+              class="relative w-full rounded-xl overflow-hidden shadow-xl border-2 border-pink-500"
             >
               <img
                 :src="category.img"
                 alt="table categories"
                 class="h-32 w-32 mx-auto"
               />
-              <div
-                v-html="$md.render(category.title || 'Category is loading....')"
-                class="text-lg font-semibold text-center bg-pink-500 py-2 px-4 text-gray-100 tracking-wide truncate"
-              ></div>
+                <div
+                  v-html="
+                    $md.render(category.title || 'Category is loading....')
+                  "
+                  class="w-full text-lg font-semibold text-center bg-pink-500 py-2 px-4 text-gray-100 tracking-wide truncate"
+                ></div>
+                <div class="absolute top-0 right-0 bg-gray-700 text-gray-200 px-3 py-1 rounded-bl-xl">Explore</div>
             </div>
           </n-link>
         </div>
@@ -52,13 +55,13 @@
         v-else-if="!categories.length"
         class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
       >
-        Fetching data
+        Fetching data ...
       </div>
       <div
         v-else-if="$apollo.queries.categories.loading"
         class="w-full h-6 flex justify-center items-center font-semibold md:text-lg tracking-widest"
       >
-        Please wait
+        Please wait ...
       </div>
     </div>
     <br />
@@ -69,19 +72,19 @@
 import { mapGetters } from "vuex";
 import categoriesQuery from "~/apollo/queries/category/categories";
 export default {
-    name: "Categories",
+  name: "Categories",
   head() {
     return {
-      title: 'Categories',
-        meta: [
-          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-          {
-            hid: 'description',
-            name: 'description',
-            content: 'Categories Page'
-          }
-        ]
-    }
+      title: "Categories",
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: "description",
+          name: "description",
+          content: "Categories Page",
+        },
+      ],
+    };
   },
   data() {
     return {

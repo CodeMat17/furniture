@@ -147,14 +147,14 @@
               <button
                 @click="$router.go(-1)"
                 type="button"
-                class="uppercase text-red-500 text-lg mt-6 font-bold py-4 px-2 rounded block w-32 border border-red-500 focus:outline-none hover:bg-red-500 hover:text-gray-200"
+                class="uppercase text-red-500 text-lg mt-6 font-bold py-3 px-2 rounded block w-32 border border-red-500 focus:outline-none hover:bg-red-500 hover:text-gray-200"
               >
                 cancel
               </button>
               <button
                 type="button"
                 @click="openModal"
-                class="uppercase text-gray-300 text-lg bg-pink-500 mt-6 font-bold tracking-widest py-4 rounded block ml-4 w-full focus:outline-none hover:bg-pink-700 hover:text-gray-300"
+                class="uppercase text-gray-300 text-lg bg-pink-500 mt-6 font-bold tracking-widest py-3 rounded block ml-4 w-full focus:outline-none hover:bg-pink-700 hover:text-gray-300"
               >
                 {{ loading ? "Please wait..." : "register" }}
               </button>

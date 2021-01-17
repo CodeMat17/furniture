@@ -61,7 +61,7 @@
         >
         <n-link
           to="/categories/login"
-          class="block px-4 pt-3 pb-4 hover:bg-pink-100 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
+          class="animate-pulse block px-4 pt-3 pb-4 hover:bg-pink-100 hover:text-gray-700 rounded sm:mt-0 sm:ml-3 sm:tracking-widest"
           >Cart</n-link
         >
         <div v-if="isAuthenticated" class="mx-4 pb-4 mt-2 pt-2">
