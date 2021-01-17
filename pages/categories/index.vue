@@ -17,7 +17,7 @@
           />
         </div>
       </div>
-      
+
       <div class="sm:grid sm:grid-cols-2 md:grid-cols-3">
         <div v-for="(category, i) in categories" :key="i" class="px-4 py-3">
           <n-link
@@ -32,7 +32,7 @@
                 alt="table categories"
                 class="h-32 w-32 mx-auto"
               />
-
+              <img :src="category.img"/>
               <div
                 v-html="$md.render(category.title || 'Category is loading....')"
                 class="text-lg font-semibold text-center bg-pink-500 py-2 px-4 text-gray-100 tracking-wide truncate"

@@ -2,6 +2,7 @@ query Categories {
     categories {
         id
        title
+       img
         image {
             url
         }
