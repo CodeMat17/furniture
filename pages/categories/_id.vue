@@ -30,7 +30,7 @@
             >
               <div class="relative">
                 <img
-                  :src="'http://localhost:1337' + furniture.image.url"
+                  :src="api_url + furniture.image.url"
                   alt="furniture image"
                   class="h-64 w-64 md:w-72 mx-auto"
                 />
@@ -76,7 +76,7 @@
         </div>
         <div
           v-if="error"
-          class="w-full h-32 flex justify-center items-center font-bold text-xl md:text-3xl tracking-widest"
+          class="w-full h-32 flex justify-center items-center font-bold md:text-lg tracking-widest"
         >
           {{ error }}
         </div>
@@ -112,6 +112,7 @@ export default {
     return {
       error: null,
       category: Object,
+      api_url: process.env.API_AUTH_URL,
     };
   },
   apollo: {
