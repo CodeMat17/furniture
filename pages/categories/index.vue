@@ -69,6 +69,20 @@
 import { mapGetters } from "vuex";
 import categoriesQuery from "~/apollo/queries/category/categories";
 export default {
+    name: "Categories",
+  head() {
+    return {
+      title: 'Categories',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'Categories Page'
+          }
+        ]
+    }
+  },
   data() {
     return {
       categories: [],

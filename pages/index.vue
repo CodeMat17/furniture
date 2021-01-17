@@ -39,7 +39,7 @@
           <div class="flex justify-center sm:justify-start">
             <button
               @click="$router.push('/categories')"
-              class="transform hover:scale-110 motion-reduce:transform-none absolute z-50 border-2 align-middle border-pink-500 text-2xl text-pink-500 font-semibold tracking-widest py-3 px-8 rounded-lg hover:text-yellow-500 hover:border-yellow-500"
+              class="transform hover:scale-110 motion-reduce:transform-none absolute z-50 border-2 align-middle border-pink-500 text-xl text-pink-500 font-semibold tracking-widest py-3 px-8 rounded-lg hover:text-yellow-500 hover:border-yellow-500"
             >
               Explore
             </button>
@@ -61,8 +61,22 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-   computed: {
-    ...mapGetters(['isAuthenticated', 'loggedInUser'])
-  }
-}
+  name: "Home",
+  head() {
+    return {
+      title: 'Home',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'Home Page'
+          }
+        ]
+    }
+  },
+  computed: {
+    ...mapGetters(["isAuthenticated", "loggedInUser"]),
+  },
+};
 </script>
