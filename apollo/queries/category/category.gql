@@ -9,6 +9,7 @@ query Category($id: ID!) {
             price
             new
             stock
+            img
             image {
                 url
             }

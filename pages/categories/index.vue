@@ -28,11 +28,10 @@
               class="w-full rounded-xl overflow-hidden shadow-xl border-2 border-pink-500"
             >
               <img
-                :src="'http://localhost:1337' + category.image.url"
+                :src="category.img"
                 alt="table categories"
                 class="h-32 w-32 mx-auto"
               />
-              <img :src="category.img"/>
               <div
                 v-html="$md.render(category.title || 'Category is loading....')"
                 class="text-lg font-semibold text-center bg-pink-500 py-2 px-4 text-gray-100 tracking-wide truncate"

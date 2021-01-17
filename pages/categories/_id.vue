@@ -30,7 +30,7 @@
             >
               <div class="relative">
                 <img
-                  :src="'http://localhost:1337' + furniture.image.url"
+                  :src="furniture.img"
                   alt="furniture image"
                   class="h-64 w-64 md:w-72 mx-auto"
                 />
